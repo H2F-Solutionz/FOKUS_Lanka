@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Rocket } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,12 +30,8 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center gap-2 text-2xl font-bold tracking-tighter cursor-pointer leading-none">
-          <span className="text-brand-orange text-4xl">4</span>
-          <div className="flex flex-col">
-            <span className="text-white text-xl tracking-widest leading-none">KUS</span>
-            <span className="text-gray-400 text-[8px] uppercase tracking-wider mt-0.5">Architectural & Design</span>
-          </div>
+        <div className="flex items-center cursor-pointer">
+          <img src={logo} alt="4KUS Construction Logo" className="h-24 w-auto object-contain" />
         </div>
 
         {/* Desktop Nav */}

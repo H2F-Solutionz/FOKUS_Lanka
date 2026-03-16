@@ -6,6 +6,8 @@
   --color-brand-glass: rgba(10, 25, 47, 0.7);
   --color-brand-orange: #ff6b35;
   --color-brand-orange-glow: rgba(255, 107, 53, 0.4);
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-cursive: 'Great Vibes', cursive;
 }
 
 @layer base {
