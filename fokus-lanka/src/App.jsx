@@ -1,13 +1,17 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import Main from './components/Main';
+import Hero from './components/Hero';
+import Features from './components/Features';
 import Footer from './components/Footer';
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-gray-50 text-slate-900 font-sans">
+    <div className="bg-brand-dark min-h-screen font-sans selection:bg-brand-orange selection:text-white">
       <Navbar />
-      <Main />
+      <main>
+        <Hero />
+        <Features />
+      </main>
       <Footer />
     </div>
   );
