@@ -1,4 +1,5 @@
 import SectionHeading from '../ui/SectionHeading';
+import { motion } from 'framer-motion';
 
 const FounderSection = () => {
   return (
@@ -10,16 +11,28 @@ const FounderSection = () => {
           <div className="absolute top-0 right-0 w-32 h-32 bg-fokus-gold/10 rounded-bl-full z-0"></div>
 
           {/* Image */}
-          <div className="w-full md:w-2/5 shrink-0 bg-gray-200 relative">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="w-full md:w-2/5 shrink-0 bg-gray-200 relative"
+          >
             <img 
               src="https://images.unsplash.com/photo-1623340333276-857c742c069c?q=80&w=800&auto=format&fit=crop" 
               alt="Lead Civil Engineer" 
               className="w-full h-full object-cover min-h-[400px]"
             />
-          </div>
+          </motion.div>
 
           {/* Content */}
-          <div className="w-full md:w-3/5 p-10 lg:p-16 flex flex-col justify-center relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="w-full md:w-3/5 p-10 lg:p-16 flex flex-col justify-center relative z-10"
+          >
             <h3 className="text-fokus-gold font-bold text-sm tracking-widest uppercase mb-2">Meet Our Lead</h3>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-fokus-navy mb-2">
               The Founder
@@ -37,7 +50,7 @@ const FounderSection = () => {
             <blockquote className="border-l-4 border-fokus-gold pl-6 italic text-fokus-navy/80 text-xl font-medium">
               "Our goal is to help families build safe, durable, and well-planned homes with complete confidence."
             </blockquote>
-          </div>
+          </motion.div>
 
         </div>
       </div>

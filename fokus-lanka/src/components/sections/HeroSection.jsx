@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import hero1 from '../../assets/hero1.jpeg';
+import hero1 from '../../assets/hero1.png';
+import hero2 from '../../assets/hero2.png';
+import hero4 from '../../assets/hero4.png';
 
 const slides = [
   {
@@ -13,14 +15,14 @@ const slides = [
     buttonLink: "/services"
   },
   {
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2671&auto=format&fit=crop", // structural engineering / planning
+    image: hero2, // structural engineering / planning
     heading: "30+ Years of Engineering Experience",
     text: "Trusted expertise from a UK-qualified civil engineer.",
     buttonText: "About Us",
     buttonLink: "/about"
   },
   {
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop", // beautiful residential house
+    image: hero4, // beautiful residential house
     heading: "From Planning to Construction",
     text: "Helping you through design, approvals, and building execution.",
     buttonText: "See Projects",
@@ -118,9 +120,8 @@ const HeroSection = () => {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              currentSlide === index ? 'bg-fokus-gold w-8' : 'bg-white/50 hover:bg-white'
-            }`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index ? 'bg-fokus-gold w-8' : 'bg-white/50 hover:bg-white'
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

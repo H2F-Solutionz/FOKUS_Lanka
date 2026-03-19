@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import SectionHeading from '../ui/SectionHeading';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +45,12 @@ const ContactSection = () => {
         <div className="grid lg:grid-cols-2 gap-16">
           
           {/* Contact Info */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+          >
             <SectionHeading 
               title="Get in Touch" 
               subtitle="Ready to build your dream home? Contact us today for a consultation or quote."
@@ -106,10 +112,16 @@ const ContactSection = () => {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-2xl relative text-fokus-navy">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="bg-white rounded-2xl p-8 shadow-2xl relative text-fokus-navy"
+          >
             {/* Form Accent */}
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-fokus-gold to-fokus-orange rounded-t-2xl"></div>
             
@@ -206,7 +218,7 @@ const ContactSection = () => {
                 )}
               </button>
             </form>
-          </div>
+          </motion.div>
 
         </div>
       </div>

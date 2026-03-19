@@ -2,6 +2,7 @@ import SectionHeading from '../ui/SectionHeading';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projectsData } from '../../data/projects';
+import { motion } from 'framer-motion';
 
 const ProjectsSection = () => {
   return (
@@ -14,9 +15,13 @@ const ProjectsSection = () => {
         />
 
         <div className="grid md:grid-cols-2 gap-8 mt-16">
-          {projectsData.map((project) => (
-            <div 
+          {projectsData.map((project, idx) => (
+            <motion.div 
               key={project.id} 
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
               className="group relative rounded-2xl overflow-hidden shadow-lg bg-white"
             >
               {/* Image Container */}
@@ -46,7 +51,7 @@ const ProjectsSection = () => {
                   View Details <ArrowRight size={18} />
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
