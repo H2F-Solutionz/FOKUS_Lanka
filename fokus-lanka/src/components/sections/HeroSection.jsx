@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import hero1 from '../../assets/hero1.jpeg';
 
 const slides = [
   {
-    image: "https://images.unsplash.com/photo-1541888086925-920a0fd5f598?q=80&w=2670&auto=format&fit=crop", // high-quality construction
+    image: hero1, // custom hero image
     heading: "Building Homes with UK Standards",
     text: "Professional civil engineering and residential construction support in Jaffna.",
     buttonText: "View Services",

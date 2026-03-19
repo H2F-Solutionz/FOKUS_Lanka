@@ -1,7 +1,43 @@
+import { useState } from 'react';
 import SectionHeading from '../ui/SectionHeading';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    service: '',
+    message: ''
+  });
+  const [status, setStatus] = useState({ loading: false, error: null, success: false });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ loading: true, error: null, success: false });
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      if (response.ok) {
+        setStatus({ loading: false, error: null, success: true });
+        setFormData({ name: '', phone: '', email: '', service: '', message: '' });
+      } else {
+        setStatus({ loading: false, error: 'Failed to send message. Please try again later.', success: false });
+      }
+    } catch (error) {
+      setStatus({ loading: false, error: 'Network error. Make sure the backend server is running.', success: false });
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-fokus-navy text-white">
       <div className="container mx-auto px-6 max-w-7xl">
@@ -79,23 +115,39 @@ const ContactSection = () => {
             
             <h3 className="text-2xl font-bold font-poppins mb-6">Send a Message</h3>
             
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {status.success && (
+                <div className="bg-green-50 text-green-800 p-4 rounded-md mb-4 border border-green-200">
+                  Message sent successfully! We will get back to you soon.
+                </div>
+              )}
+              {status.error && (
+                <div className="bg-red-50 text-red-800 p-4 rounded-md mb-4 border border-red-200">
+                  {status.error}
+                </div>
+              )}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
                 <input 
                   type="text" 
                   id="name" 
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 rounded-md bg-gray-50 border border-gray-200 focus:border-fokus-gold focus:ring-2 focus:ring-fokus-gold/20 outline-none transition-all"
                   placeholder="John Doe"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
                   <input 
                     type="tel" 
                     id="phone" 
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-3 rounded-md bg-gray-50 border border-gray-200 focus:border-fokus-gold focus:ring-2 focus:ring-fokus-gold/20 outline-none transition-all"
                     placeholder="+94 77 XXX XXXX"
                   />
@@ -105,6 +157,9 @@ const ContactSection = () => {
                   <input 
                     type="email" 
                     id="email" 
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-3 rounded-md bg-gray-50 border border-gray-200 focus:border-fokus-gold focus:ring-2 focus:ring-fokus-gold/20 outline-none transition-all"
                     placeholder="john@example.com"
                   />
@@ -115,6 +170,9 @@ const ContactSection = () => {
                 <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">Service Needed</label>
                 <select 
                   id="service" 
+                  value={formData.service}
+                  onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 rounded-md bg-gray-50 border border-gray-200 focus:border-fokus-gold focus:ring-2 focus:ring-fokus-gold/20 outline-none transition-all text-fokus-navy"
                 >
                   <option value="">Select a service...</option>
@@ -130,16 +188,22 @@ const ContactSection = () => {
                 <textarea 
                   id="message" 
                   rows="4" 
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 rounded-md bg-gray-50 border border-gray-200 focus:border-fokus-gold focus:ring-2 focus:ring-fokus-gold/20 outline-none transition-all resize-none"
                   placeholder="Tell us about your project requirements..."
                 ></textarea>
               </div>
 
               <button 
-                type="button" 
-                className="w-full bg-fokus-navy hover:bg-fokus-blue text-white py-4 rounded-md font-semibold text-lg flex items-center justify-center gap-2 transition-colors duration-300 shadow-lg hover:shadow-xl"
+                type="submit" 
+                disabled={status.loading}
+                className="w-full bg-fokus-navy hover:bg-fokus-blue text-white py-4 rounded-md font-semibold text-lg flex items-center justify-center gap-2 transition-colors duration-300 shadow-lg hover:shadow-xl disabled:opacity-70"
               >
-                SendMessage <Send size={20} />
+                {status.loading ? 'Sending...' : (
+                  <>SendMessage <Send size={20} /></>
+                )}
               </button>
             </form>
           </div>
