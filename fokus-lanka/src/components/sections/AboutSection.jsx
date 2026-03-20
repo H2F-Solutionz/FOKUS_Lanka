@@ -1,5 +1,6 @@
 import SectionHeading from '../ui/SectionHeading';
 import { Award, ShieldCheck, Home, MapPin } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const AboutSection = () => {
   const highlights = [
@@ -15,7 +16,12 @@ const AboutSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
           {/* Text Content */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+          >
             <SectionHeading 
               title="About Fokus Lanka" 
               subtitle="Bringing UK engineering excellence to Sri Lankan residential construction."
@@ -44,10 +50,16 @@ const AboutSection = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Image Content */}
-          <div className="relative">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="relative"
+          >
             {/* Main Image */}
             <div className="rounded-xl overflow-hidden shadow-2xl relative z-10">
               <img 
@@ -59,7 +71,7 @@ const AboutSection = () => {
             </div>
             {/* Background Decorative Element */}
             <div className="absolute -bottom-6 -right-6 w-full h-full border-4 border-fokus-orange rounded-xl z-0 hidden lg:block"></div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

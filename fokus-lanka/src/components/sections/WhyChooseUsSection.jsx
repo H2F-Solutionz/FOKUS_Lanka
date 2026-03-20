@@ -1,4 +1,5 @@
 import { CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const reasons = [
   "30+ years of high-level engineering experience.",
@@ -18,7 +19,13 @@ const WhyChooseUsSection = () => {
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          <div className="relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="relative z-10"
+          >
             <h2 className="text-4xl font-bold font-poppins text-fokus-navy mb-6">
               Why Choose <span className="text-fokus-gold">Fokus Lanka?</span>
             </h2>
@@ -38,9 +45,15 @@ const WhyChooseUsSection = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
-          <div className="relative">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
             <div className="grid grid-cols-2 gap-4">
               <img 
                 src="https://images.unsplash.com/photo-1504307659564-90f67ab42dd2?q=80&w=800&auto=format&fit=crop" 
@@ -58,7 +71,7 @@ const WhyChooseUsSection = () => {
               <span className="text-4xl font-bold text-fokus-gold">30+</span>
               <span className="font-poppins text-sm uppercase tracking-wide mt-1">Years<br/>Quality</span>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

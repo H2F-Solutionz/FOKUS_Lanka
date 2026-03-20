@@ -16,14 +16,14 @@ const Hero = () => {
       >
         <source src={introVideo} type="video/mp4" />
       </video>
-      
+
       {/* Background Effects */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-orange/20 rounded-full blur-[120px] pointer-events-none opacity-40" />
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-blue/80 rounded-full blur-[150px] pointer-events-none opacity-50" />
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center text-center mt-10">
-        
-        <motion.h1 
+
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -58,8 +58,8 @@ const Hero = () => {
               className="font-bold flex"
             >
               {"Engineers".split('').map((char, i) => (
-                <motion.span 
-                  key={`eng-${i}`} 
+                <motion.span
+                  key={`eng-${i}`}
                   variants={{
                     hidden: { opacity: 0 },
                     visible: { opacity: 1 }
@@ -95,25 +95,25 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-           initial="hidden"
-           animate="visible"
-           whileHover="hover"
-           variants={{
-             hidden: { opacity: 0 },
-             visible: { opacity: 1, transition: { duration: 1, delay: 0.4 } }
-           }}
-           className="relative inline-block mb-12 cursor-pointer"
+          initial="hidden"
+          animate="visible"
+          whileHover="hover"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { duration: 1, delay: 0.4 } }
+          }}
+          className="relative inline-block mb-12 cursor-pointer"
         >
           <p className="text-xl md:text-2xl text-gray-300 font-light tracking-wide italic lowercase capitalize-first">
             Engineering Strength, <span className="text-brand-orange font-medium">Architectural Vision.</span>
           </p>
           {/* Animated curved underline SVG */}
-          <motion.svg 
-            className="absolute -bottom-2 left-0 w-full h-3 max-w-full stroke-brand-orange" 
-            viewBox="0 0 100 20" 
-            preserveAspectRatio="none" 
-            fill="none" 
-            strokeWidth="3" 
+          <motion.svg
+            className="absolute -bottom-2 left-0 w-full h-3 max-w-full stroke-brand-orange"
+            viewBox="0 0 100 20"
+            preserveAspectRatio="none"
+            fill="none"
+            strokeWidth="3"
             strokeLinecap="round"
             variants={{
               hidden: { opacity: 0 },
@@ -121,7 +121,7 @@ const Hero = () => {
               hover: { opacity: 1, transition: { duration: 0.2 } }
             }}
           >
-            <motion.path 
+            <motion.path
               d="M0,10 Q50,20 100,0"
               variants={{
                 hidden: { pathLength: 0 },
@@ -132,7 +132,7 @@ const Hero = () => {
           </motion.svg>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -156,8 +156,8 @@ const Hero = () => {
       </div>
 
       {/* Industrial Floating Elements */}
-      <motion.div 
-        animate={{ 
+      <motion.div
+        animate={{
           y: [0, -10, 0],
         }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}

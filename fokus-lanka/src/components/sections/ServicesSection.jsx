@@ -1,5 +1,6 @@
 import SectionHeading from '../ui/SectionHeading';
 import { Home, ClipboardList, PenTool, FileCheck, Hammer, Headphones } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const servicesData = [
   {
@@ -47,8 +48,12 @@ const ServicesSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
           {servicesData.map((service, idx) => (
-            <div 
-              key={idx} 
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="group bg-white/5 border border-white/10 p-8 rounded-xl hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 cursor-pointer relative overflow-hidden"
             >
               {/* Hover Accent Bar */}
@@ -62,7 +67,7 @@ const ServicesSection = () => {
               <p className="text-gray-300 leading-relaxed font-light">
                 {service.description}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
