@@ -65,9 +65,14 @@ const ContactSection = () => {
                 <div>
                   <h4 className="text-xl font-bold font-poppins mb-1">Phone</h4>
                   <p className="text-gray-300 mb-1">Call us for immediate support</p>
-                  <a href="tel:+94773155125" className="text-fokus-orange hover:text-white transition-colors text-lg font-semibold tracking-wide">
-                    +94 77 315 5125
-                  </a>
+                  <div className="flex flex-col">
+                    <a href="tel:+940701080100" className="text-fokus-orange hover:text-white transition-colors text-lg font-semibold tracking-wide">
+                      +94 070 10 80 100
+                    </a>
+                    <a href="tel:+940706070100" className="text-fokus-orange hover:text-white transition-colors text-lg font-semibold tracking-wide">
+                      +94 070 60 70 100
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -91,7 +96,7 @@ const ContactSection = () => {
                 <div>
                   <h4 className="text-xl font-bold font-poppins mb-1">Location</h4>
                   <p className="text-gray-300 leading-relaxed max-w-sm">
-                    123 Engineering Avenue, <br />
+                    No 58 Maruthadi Road, <br />
                     Jaffna, <br />
                     Northern Province, Sri Lanka
                   </p>
@@ -99,18 +104,18 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="mt-12 h-64 bg-gray-200 rounded-xl overflow-hidden relative">
-              <img 
-                src="https://images.unsplash.com/photo-1596541223130-5d56447cefe5?q=80&w=800&auto=format&fit=crop" 
-                alt="Map Placeholder" 
-                className="w-full h-full object-cover grayscale opacity-80"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                <span className="bg-white text-fokus-navy px-4 py-2 rounded-md font-semibold text-sm shadow-lg flex items-center gap-2">
-                  <MapPin size={16} /> Location Map
-                </span>
-              </div>
+            {/* Embedded Google Map */}
+            <div className="mt-12 h-64 bg-gray-200 rounded-xl overflow-hidden relative shadow-inner">
+              <iframe 
+                src="https://maps.google.com/maps?q=No%2058%20Maruthadi%20Road,%20Jaffna,%20Sri%20Lanka&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Maps Location"
+              ></iframe>
             </div>
           </motion.div>
 
@@ -214,7 +219,7 @@ const ContactSection = () => {
                 className="w-full bg-fokus-navy hover:bg-fokus-blue text-white py-4 rounded-md font-semibold text-lg flex items-center justify-center gap-2 transition-colors duration-300 shadow-lg hover:shadow-xl disabled:opacity-70"
               >
                 {status.loading ? 'Sending...' : (
-                  <>SendMessage <Send size={20} /></>
+                  <>Send Message <Send size={20} /></>
                 )}
               </button>
             </form>

@@ -17,13 +17,7 @@
 }
 
 .block {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  background-color: #FFD700; /* Safety Yellow */
-  border: 2px solid #333;
-  opacity: 0;
-  animation: dropIn 2s infinite;
+  display: none;
 }
 
 /* Positioning the blocks to form a small "building" */

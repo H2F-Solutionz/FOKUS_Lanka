@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
@@ -7,13 +8,29 @@ import Services from './pages/Services';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Contact from './pages/Contact';
+import ConstructionLoader from './components/ui/ConstructionLoader';
 import { MessageCircle } from 'lucide-react';
 
-function App() {
+const AppContent = () => {
+  const [loading, setLoading] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setLoading(true);
+    window.scrollTo(0, 0);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
+  if (loading) {
+    return <ConstructionLoader />;
+  }
+
   return (
-    <Router>
-      <div className="font-inter bg-fokus-light min-h-screen relative w-full overflow-x-hidden flex flex-col">
-        <Navbar />
+    <div className="font-inter bg-fokus-light min-h-screen relative w-full overflow-x-hidden flex flex-col">
+      <Navbar />
         
         <main className="flex-grow">
           <Routes>
@@ -31,7 +48,7 @@ function App() {
         {/* Floating WhatsApp Button */}
         <div className="fixed bottom-8 right-8 z-50 flex items-center gap-3">
           {/* Animated Chat Bubble */}
-          <div className="hidden md:block bg-white text-fokus-navy px-4 py-2 rounded-2xl shadow-lg relative animate-bounce border border-gray-100">
+          <div className="hidden md:block bg-white text-fokus-navy px-4 py-2 rounded-2xl shadow-lg relative border border-gray-100">
             <span className="font-semibold text-sm whitespace-nowrap text-gray-800">
               Your vision, our expertise. Let's talk
             </span>
@@ -40,7 +57,7 @@ function App() {
           </div>
 
           <a 
-            href="https://wa.me/94773155125" 
+            href="https://wa.me/94701080100" 
             target="_blank" 
             rel="noreferrer"
             className="bg-[#25D366] text-white p-4 rounded-full shadow-[0_0_15px_rgba(37,211,102,0.5)] hover:bg-[#20bd5a] hover:scale-110 hover:shadow-[0_0_25px_rgba(37,211,102,0.8)] transition-all duration-300 flex items-center justify-center"
@@ -52,6 +69,13 @@ function App() {
           </a>
         </div>
       </div>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
