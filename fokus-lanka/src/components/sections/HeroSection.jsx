@@ -32,32 +32,37 @@ const slides = [
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [direction, setDirection] = useState(0);
 
   // Auto-play interval
   useEffect(() => {
     const timer = setInterval(() => {
+      setDirection(1);
       setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
     }, 5000);
     return () => clearInterval(timer);
   }, []);
 
   const nextSlide = () => {
+    setDirection(1);
     setCurrentSlide(currentSlide === slides.length - 1 ? 0 : currentSlide + 1);
   };
 
   const prevSlide = () => {
+    setDirection(-1);
     setCurrentSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1);
   };
 
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden bg-fokus-navy">
-      <AnimatePresence mode="wait">
+    <section id="home" className="relative h-screen w-full overflow-hidden bg-black">
+      <AnimatePresence initial={false} custom={direction}>
         <motion.div
           key={currentSlide}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          custom={direction}
+          initial={{ x: direction > 0 ? '100%' : direction < 0 ? '-100%' : '100%' }}
+          animate={{ x: 0 }}
+          exit={{ x: direction > 0 ? '-100%' : direction < 0 ? '100%' : '-100%' }}
+          transition={{ duration: 0.8, ease: [0.4, 0.0, 0.2, 1] }}
           className="absolute inset-0"
         >
           {/* Background Image */}
@@ -76,10 +81,10 @@ const HeroSection = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              initial={{ opacity: 0, x: 50 * direction }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 * direction }}
+              transition={{ duration: 0.6 }}
             >
               <h1 className="text-4xl md:text-6xl font-bold font-poppins text-white mb-6 leading-tight drop-shadow-lg">
                 {slides[currentSlide].heading}
@@ -119,7 +124,10 @@ const HeroSection = () => {
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentSlide(index)}
+            onClick={() => {
+              setDirection(index > currentSlide ? 1 : -1);
+              setCurrentSlide(index);
+            }}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index ? 'bg-fokus-gold w-8' : 'bg-white/50 hover:bg-white'
               }`}
             aria-label={`Go to slide ${index + 1}`}

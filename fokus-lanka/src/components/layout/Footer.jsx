@@ -44,11 +44,14 @@ const Footer = () => {
             <ul className="flex flex-col gap-4 text-sm text-gray-300">
               <li className="flex gap-3 items-start">
                 <span className="text-fokus-gold mt-1">📍</span>
-                <span>Jaffna, Sri Lanka</span>
+                <span>No 58 Maruthadi Road,<br/>Jaffna, Sri Lanka</span>
               </li>
-              <li className="flex gap-3 items-center">
-                <span className="text-fokus-gold">📞</span>
-                <a href="tel:+94773155125" className="hover:text-white transition-colors">+94 77 315 5125</a>
+              <li className="flex gap-3 items-start">
+                <span className="text-fokus-gold mt-1">📞</span>
+                <div className="flex flex-col">
+                  <a href="tel:+940701080100" className="hover:text-white transition-colors">+94 070 10 80 100</a>
+                  <a href="tel:+940706070100" className="hover:text-white transition-colors">+94 070 60 70 100</a>
+                </div>
               </li>
               <li className="flex gap-3 items-center">
                 <span className="text-fokus-gold">✉️</span>

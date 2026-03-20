@@ -1,25 +1,9 @@
-import { useState, useEffect } from 'react';
 import HeroSection from '../components/sections/HeroSection';
 import WhyChooseUsSection from '../components/sections/WhyChooseUsSection';
 import ProjectsSection from '../components/sections/ProjectsSection';
-import ConstructionLoader from '../components/ui/ConstructionLoader';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Show Drop & Build loader for a short duration
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return <ConstructionLoader />;
-  }
-
   return (
     <>
       <HeroSection />

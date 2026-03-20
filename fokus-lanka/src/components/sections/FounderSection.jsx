@@ -35,11 +35,12 @@ const FounderSection = () => {
           >
             <h3 className="text-fokus-gold font-bold text-sm tracking-widest uppercase mb-2">Meet Our Lead</h3>
             <h2 className="text-3xl md:text-4xl font-bold font-poppins text-fokus-navy mb-2">
-              The Founder
+              N.K. KUMARASOORIYAR
             </h2>
-            <p className="text-xl text-fokus-blue font-medium mb-6">
-              BSc (Hons) Civil Engineering, UK
-            </p>
+            <div className="flex flex-col gap-1 mb-6">
+              <span className="text-xl text-fokus-blue font-semibold">Senior Consultant / CEO</span>
+              <span className="text-lg text-gray-500 font-medium tracking-wide">B.Eng (Hons), London</span>
+            </div>
             
             <div className="w-16 h-1 bg-fokus-orange mb-8 rounded-full"></div>
 

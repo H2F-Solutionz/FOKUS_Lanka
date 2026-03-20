@@ -107,12 +107,20 @@ const ProjectDetail = () => {
                 >
                   Start Your Project
                 </Link>
-                <a 
-                  href="tel:+94773155125" 
-                  className="block w-full text-center mt-4 border border-white/20 hover:bg-white/10 text-white py-4 rounded-lg font-bold transition-all text-sm"
-                >
-                  Call +94 77 315 5125
-                </a>
+                <div className="flex flex-col gap-2 mt-4">
+                  <a 
+                    href="tel:+940701080100" 
+                    className="block w-full text-center border border-white/20 hover:bg-white/10 text-white py-4 rounded-lg font-bold transition-all text-sm"
+                  >
+                    Call +94 070 10 80 100
+                  </a>
+                  <a 
+                    href="tel:+940706070100" 
+                    className="block w-full text-center border border-white/20 hover:bg-white/10 text-white py-4 rounded-lg font-bold transition-all text-sm"
+                  >
+                    Call +94 070 60 70 100
+                  </a>
+                </div>
               </div>
             </div>
 

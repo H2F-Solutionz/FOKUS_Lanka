@@ -12,12 +12,12 @@ const Navbar = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
-    
+
     // Always consider Navbar scrolled if not on Home page for better visibility
     if (location.pathname !== '/') {
       setIsScrolled(true);
     }
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
 
@@ -31,14 +31,12 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled || location.pathname !== '/' ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled || location.pathname !== '/' ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
+        }`}
     >
       <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <span className={`text-2xl font-poppins font-bold tracking-tight transition-colors ${
-              isScrolled || location.pathname !== '/' ? 'text-fokus-navy' : 'text-white'
+          <span className={`text-2xl font-poppins font-bold tracking-tight transition-colors ${isScrolled || location.pathname !== '/' ? 'text-fokus-navy' : 'text-white'
             }`}
           >
             Fokus Lanka
@@ -51,9 +49,8 @@ const Navbar = () => {
             <Link
               key={link.name}
               to={link.href}
-              className={`font-medium transition-colors hover:text-fokus-gold ${
-                isScrolled || location.pathname !== '/' ? 'text-fokus-navy' : 'text-white/90'
-              }`}
+              className={`font-medium transition-colors hover:text-fokus-gold ${isScrolled || location.pathname !== '/' ? 'text-fokus-navy' : 'text-white/90'
+                }`}
             >
               {link.name}
             </Link>
@@ -68,9 +65,8 @@ const Navbar = () => {
 
         {/* Mobile Nav Toggle */}
         <button
-          className={`md:hidden p-2 transition-colors ${
-            isScrolled || location.pathname !== '/' ? 'text-fokus-navy' : 'text-white'
-          }`}
+          className={`md:hidden p-2 transition-colors ${isScrolled || location.pathname !== '/' ? 'text-fokus-navy' : 'text-white'
+            }`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
