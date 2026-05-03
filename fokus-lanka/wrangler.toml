@@ -1,0 +1,6 @@
+name = "fokus"
+pages_build_output_dir = "dist"
+
+[vars]
+# Add your environment variables here
+# RESEND_API_KEY = "your-key"
