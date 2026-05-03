@@ -1,65 +1,47 @@
 import React from 'react';
+import logo from '../../assets/logo.png';
 import './Loader.css';
 
 const ConstructionLoader = () => {
   return (
     <div className="loader-overlay">
-      {/* Background grid lines */}
-      <div className="loader-grid" />
+      {/* ── Blueprint Background ── */}
+      <div className="blueprint-grid" />
+      
+      {/* ── Animated Drafting Lines ── */}
+      <div className="drafting-container">
+        {/* Decorative Circles */}
+        <div className="loader-circle" style={{ width: '400px', height: '400px', animationDuration: '15s' }} />
+        <div className="loader-circle" style={{ width: '500px', height: '500px', animationDuration: '20s', borderStyle: 'dashed' }} />
+        
+        {/* Dynamic Sketch Lines */}
+        <div className="drafting-line line-h" style={{ top: '35%' }} />
+        <div className="drafting-line line-h" style={{ top: '65%' }} />
+        <div className="drafting-line line-v" style={{ left: '35%' }} />
+        <div className="drafting-line line-v" style={{ left: '65%' }} />
+        
+        {/* Scanner Effect */}
+        <div className="scanner-beam" />
 
-      {/* Corner architectural accents */}
-      <div className="loader-corner tl" />
-      <div className="loader-corner tr" />
-      <div className="loader-corner bl" />
-      <div className="loader-corner br" />
-
-      <div className="loader-container">
-
-        {/* ── Ring System ── */}
-        <div className="loader-ring-wrap">
-          {/* Dashed outer ring */}
-          <div className="ring-outer" />
-
-          {/* Conic gradient spinning ring */}
-          <div className="ring-mid" />
-
-          {/* Orbiting particle 1 */}
-          <div className="orbit-wrap" style={{ '--dur': '3s', '--dir': 'normal' }}>
-            <div className="orbit-dot" style={{ '--sz': '8px', '--clr': '#D4AF37' }} />
-          </div>
-
-          {/* Orbiting particle 2 */}
-          <div className="orbit-wrap" style={{ '--dur': '4.5s', '--dir': 'reverse', inset: '-35px' }}>
-            <div className="orbit-dot" style={{ '--sz': '5px', '--clr': '#FF8C00' }} />
-          </div>
-
-          {/* Orbiting particle 3 */}
-          <div className="orbit-wrap" style={{ '--dur': '6s', '--dir': 'normal', inset: '-50px' }}>
-            <div className="orbit-dot" style={{ '--sz': '4px', '--clr': 'rgba(212,175,55,0.6)' }} />
-          </div>
-
-          {/* Core disc with icon */}
-          <div className="ring-core">
-            <span className="ring-core-icon" role="img" aria-label="building">🏗️</span>
-          </div>
-        </div>
-
-        {/* ── Brand Name ── */}
-        <h1 className="loader-brand">Fokus Lanka</h1>
-        <p className="loader-tagline">Engineering Excellence • Est. Jaffna</p>
-
-        {/* ── Progress bar ── */}
-        <div className="loader-progress-wrap">
-          <div className="loader-progress-bar" />
-        </div>
-
-        {/* ── Bounce dots ── */}
-        <div className="loader-dots">
-          <span />
-          <span />
-          <span />
+        {/* ── Central Logo ── */}
+        <div className="loader-logo-wrap">
+          <img 
+            src={logo} 
+            alt="Fokus Lanka" 
+            className="loader-logo-img brightness-0 invert opacity-90"
+          />
         </div>
       </div>
+
+      {/* ── Brand Detail ── */}
+      <div className="loader-content">
+        <div className="loading-text">Engineering Excellence</div>
+        <div className="loading-sub">Precision • Innovation • Heritage</div>
+      </div>
+
+      {/* Corner Accents */}
+      <div className="absolute top-10 left-10 w-20 h-20 border-t-2 border-l-2 border-fokus-gold/20" />
+      <div className="absolute bottom-10 right-10 w-20 h-20 border-b-2 border-r-2 border-fokus-gold/20" />
     </div>
   );
 };

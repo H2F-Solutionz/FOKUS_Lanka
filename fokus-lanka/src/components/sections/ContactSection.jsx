@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import SectionHeading from '../ui/SectionHeading';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const ContactSection = () => {
@@ -119,43 +119,66 @@ const ContactSection = () => {
               </motion.div>
             </div>
 
-            {/* Embedded Map - Enhanced */}
+            {/* Enhanced Map Section */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="mt-12"
+              className="mt-12 relative group"
             >
-              <div className="relative group">
-                {/* Animated Background Glow */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-fokus-gold to-fokus-orange rounded-3xl opacity-0 group-hover:opacity-30 blur-xl transition-all duration-500"></div>
-                
-                {/* Map Container */}
-                <div className="relative h-72 rounded-3xl overflow-hidden shadow-2xl border border-white/10 backdrop-blur-sm bg-white/5\">
-                  {/* Animated corner elements */}
-                  <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-fokus-gold rounded-tl-lg pointer-events-none z-10 opacity-60"></div>
-                  <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-fokus-orange rounded-br-lg pointer-events-none z-10 opacity-60"></div>
-                  
+              <div className="absolute -inset-1 bg-gradient-to-r from-fokus-gold to-fokus-orange rounded-[2rem] opacity-0 group-hover:opacity-20 blur-2xl transition-all duration-700"></div>
+              
+              <div className="relative bg-white/5 backdrop-blur-xl rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
+                {/* Map Overlay Info */}
+                <div className="absolute top-0 left-0 right-0 p-6 z-20 bg-gradient-to-b from-fokus-navy/90 to-transparent pointer-events-none">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-fokus-gold text-[10px] font-bold uppercase tracking-[0.2em] mb-1">Our Office</p>
+                      <h4 className="text-white font-bold font-poppins text-sm flex items-center gap-2">
+                        <MapPin size={14} className="text-fokus-gold" /> Jaffna Headquarters
+                      </h4>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                      <span className="text-[10px] font-bold text-white/80">Sri Lanka</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* The Map */}
+                <div className="h-80 w-full relative">
                   <iframe 
-                    src="https://maps.google.com/maps?q=No%2058%20Maruthadi%20Road,%20Jaffna,%20Sri%20Lanka&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3933.245648834789!2d80.01041697584144!3d9.664369490424566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afe541065f492a5%3A0xe54e38e4a9e52e46!2sMaruthadi%20Rd%2C%20Jaffna!5e0!3m2!1sen!2slk!4v1714760000000!5m2!1sen!2slk" 
                     width="100%" 
                     height="100%" 
-                    style={{ border: 0 }} 
+                    style={{ border: 0, filter: 'grayscale(0.2) contrast(1.1) brightness(0.9)' }} 
                     allowFullScreen="" 
                     loading="lazy" 
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Google Maps Location"
-                    className="rounded-3xl"
+                    title="Fokus Lanka Location"
+                    className="relative z-10"
                   ></iframe>
                   
-                  {/* Floating map indicator badge */}
-                  <motion.div 
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="absolute top-6 right-6 z-20 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full shadow-xl border border-white/20"
-                  >
-                    <p className="text-fokus-navy text-xs font-bold tracking-widest">📍 Jaffna</p>
-                  </motion.div>
+                  {/* Custom interactive layer (visual only) */}
+                  <div className="absolute bottom-4 left-4 z-20">
+                    <a 
+                      href="https://maps.google.com/maps?q=No%2058%20Maruthadi%20Road,%20Jaffna,%20Sri%20Lanka" 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="bg-white text-fokus-navy px-5 py-2.5 rounded-xl text-xs font-bold shadow-xl hover:scale-105 transition-all flex items-center gap-2 border border-white/20"
+                    >
+                      Get Directions <ExternalLink size={14} />
+                    </a>
+                  </div>
+                </div>
+                
+                {/* Bottom glass bar */}
+                <div className="p-4 bg-white/5 border-t border-white/5 flex items-center justify-center gap-6">
+                  <div className="flex items-center gap-2 opacity-60">
+                    <div className="w-2 h-2 rounded-full bg-fokus-gold animate-pulse"></div>
+                    <span className="text-[10px] font-medium tracking-wider uppercase">Open Now</span>
+                  </div>
+                  <div className="w-px h-3 bg-white/10"></div>
+                  <span className="text-[10px] font-medium tracking-wider opacity-60 uppercase">9:00 AM - 6:00 PM</span>
                 </div>
               </div>
             </motion.div>
@@ -180,9 +203,10 @@ const ContactSection = () => {
                 <motion.div 
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-green-500/20 text-green-300 p-4 rounded-lg border border-green-500/30 text-sm"
+                  className="bg-green-500/20 text-green-300 p-4 rounded-lg border border-green-500/30 text-sm flex items-center gap-2"
                 >
-                  ✓ Message sent successfully! We'll get back to you soon.
+                  <CheckCircle2 size={18} className="text-green-400" />
+                  <span>Message sent successfully! We'll get back to you soon.</span>
                 </motion.div>
               )}
               {status.error && (
