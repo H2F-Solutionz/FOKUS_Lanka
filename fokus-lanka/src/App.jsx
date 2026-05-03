@@ -23,7 +23,7 @@ const AppContent = () => {
     const timer = setTimeout(() => {
       setLoading(false);
       setIsInitialLoad(false);
-    }, 2000);
+    }, 4000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -55,14 +55,15 @@ const AppContent = () => {
   return (
     <div className="font-inter bg-fokus-light min-h-screen relative w-full overflow-x-hidden flex flex-col">
       {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 h-1 bg-gray-200/20 z-40">
+      <div className="fixed top-0 left-0 right-0 h-1 bg-transparent z-40">
         <div 
           className="h-full bg-gradient-to-r from-fokus-gold to-fokus-orange transition-all duration-300"
           style={{ width: `${scrollProgress}%` }}
         ></div>
       </div>
 
-      <Navbar />
+      {/* Conditionally hide Navbar on project detail pages */}
+      {!location.pathname.includes('/projects/') && <Navbar />}
         
         <main className="flex-grow">
           <Routes>

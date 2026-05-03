@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../../assets/logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,7 +45,7 @@ const Navbar = () => {
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    
+
     if (href === '#home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
@@ -61,30 +62,35 @@ const Navbar = () => {
         }`}
     >
       <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
-        <Link to="/" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-2 group cursor-pointer">
-          <span className={`text-xl font-poppins font-bold tracking-tight transition-colors ${isScrolled ? 'text-fokus-navy' : 'text-white'
-            }`}
+        <div className="relative w-32 md:w-48 flex items-center">
+          <Link
+            to="/"
+            onClick={(e) => handleNavClick(e, '#home')}
+            className="absolute top-1/2 left-0 -translate-y-1/2 z-50"
           >
-            Fokus <span className={`${isScrolled ? 'text-fokus-gold' : 'text-fokus-gold'}`}>Lanka</span>
-          </span>
-        </Link>
+            <img
+              src={logo}
+              alt="Fokus Lanka"
+              className={`h-20 md:h-32 w-auto transition-all duration-300 drop-shadow-xl ${!isScrolled && 'brightness-0 invert'}`}
+            />
+          </Link>
+        </div>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => {
             const sectionId = link.href.replace('#', '');
             const isActive = activeSection === sectionId;
-            
+
             return (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`font-medium text-sm tracking-wide transition-all duration-300 relative group cursor-pointer ${
-                  isScrolled 
-                    ? isActive ? 'text-fokus-gold' : 'text-fokus-navy hover:text-fokus-gold'
-                    : isActive ? 'text-fokus-gold' : 'text-white/90 hover:text-fokus-gold'
-                }`}
+                className={`font-medium text-sm tracking-wide transition-all duration-300 relative group cursor-pointer ${isScrolled
+                  ? isActive ? 'text-fokus-gold' : 'text-fokus-navy hover:text-fokus-gold'
+                  : isActive ? 'text-fokus-gold' : 'text-white/90 hover:text-fokus-gold'
+                  }`}
               >
                 {link.name}
                 <span className={`absolute bottom-0 left-0 h-0.5 bg-fokus-gold transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
@@ -116,17 +122,16 @@ const Navbar = () => {
           {navLinks.map((link) => {
             const sectionId = link.href.replace('#', '');
             const isActive = activeSection === sectionId;
-            
+
             return (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`font-medium text-lg border-b border-gray-100 pb-2 cursor-pointer transition-colors ${
-                  isActive 
-                    ? 'text-fokus-gold font-bold' 
-                    : 'text-fokus-navy hover:text-fokus-gold'
-                }`}
+                className={`font-medium text-lg border-b border-gray-100 pb-2 cursor-pointer transition-colors ${isActive
+                  ? 'text-fokus-gold font-bold'
+                  : 'text-fokus-navy hover:text-fokus-gold'
+                  }`}
               >
                 {link.name}
               </a>

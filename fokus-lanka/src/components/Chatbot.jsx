@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, User, ChevronDown } from 'lucide-react';
 import faqs from '../data/faqs.json';
-import { sendMessageToHF } from '../utils/hfChat';
+import { processChat } from '../utils/botService';
 
 const Chatbot = () => {
   const [show, setShow] = useState(false);
@@ -27,10 +27,11 @@ const Chatbot = () => {
     setInput('');
     setLoading(true);
     try {
-      const hfReply = await sendMessageToHF(input);
-      setMessages(prev => [...prev, { from: 'bot', text: hfReply }]);
-    } catch {
-      setMessages(prev => [...prev, { from: 'bot', text: 'Sorry, I\'m having trouble connecting right now. Please call us at +94 070 10 80 100.' }]);
+      const botReply = await processChat(input);
+      setMessages(prev => [...prev, { from: 'bot', text: botReply }]);
+    } catch (err) {
+      console.error('Chat error:', err);
+      setMessages(prev => [...prev, { from: 'bot', text: 'Sorry, I\'m having trouble connecting right now. Please call us at +94 701 080 100.' }]);
     } finally {
       setLoading(false);
     }

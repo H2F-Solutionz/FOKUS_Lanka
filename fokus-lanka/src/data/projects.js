@@ -10,7 +10,7 @@ export const projectsData = [
     gallery: [
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1428360905656-e1cba7d7e86e?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200&auto=format&fit=crop"
     ],
     description: "An iconic high-rise residential complex situated in London's prestigious Canary Wharf financial district. This project represents our senior engineer's direct involvement in structural integrity audits and compliance management for a landmark urban development.\n\nThe project demanded meticulous adherence to the UK Building Regulations 2010 (Part A — Structural, Part B — Fire Safety, Part L — Energy Efficiency), coordination with multiple structural engineering teams, and real-time site inspections across 32 residential floors.",
     highlights: [
@@ -37,9 +37,9 @@ export const projectsData = [
     category: "Mixed-use Development",
     mainImage: "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=1800&auto=format&fit=crop",
     gallery: [
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
     ],
     description: "A prestigious mixed-use development in the heart of the City of London, incorporating premium commercial office spaces and high-end residential units. This project required multi-disciplinary coordination across architectural, structural, MEP, and project management teams.\n\nOur engineer played a key role in overseeing structural sequencing, resolving complex foundation challenges in dense urban bedrock, and ensuring full compliance with London Borough planning permissions and CDM (Construction Design & Management) regulations.",
     highlights: [
@@ -97,7 +97,7 @@ export const projectsData = [
     gallery: [
       "https://images.unsplash.com/photo-1513584684031-4345357ad986?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=1200&auto=format&fit=crop"
+      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1200&auto=format&fit=crop"
     ],
     description: "An eco-forward residential home in Northern Sri Lanka built with sustainability at its core. This project demonstrates that cost-effective construction and premium quality are not mutually exclusive — when guided by UK-level engineering expertise.\n\nLocally sourced laterite stone walls provide natural thermal regulation, while thoughtfully oriented windows maximize daylight and reduce artificial lighting dependency by 40%. Rainwater harvesting tanks and composting zones were integrated from the design stage, making this home a model of responsible construction in the Northern Province.",
     highlights: [

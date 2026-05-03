@@ -1,5 +1,5 @@
 import SectionHeading from '../ui/SectionHeading';
-import { ArrowRight, MapPin } from 'lucide-react';
+import { ArrowRight, MapPin, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projectsData } from '../../data/projects';
 import { motion } from 'framer-motion';
@@ -38,9 +38,9 @@ const ProjectsSection = () => {
                   <motion.div 
                     animate={{ rotate: [0, 5, -5, 0] }}
                     transition={{ duration: 3, repeat: Infinity }}
-                    className="absolute top-4 right-4 z-20 bg-gradient-to-r from-fokus-gold to-fokus-orange text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg transform"
+                    className="absolute top-4 right-4 z-20 bg-gradient-to-r from-fokus-gold to-fokus-orange text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg transform flex items-center gap-1.5"
                   >
-                    ⭐ Featured
+                    <Star size={12} fill="currentColor" /> Featured
                   </motion.div>
                 )}
 
@@ -113,21 +113,6 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        {/* View All Projects CTA */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="flex justify-center mt-20"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-4 bg-fokus-navy text-white font-bold rounded-2xl shadow-lg hover:shadow-2xl transition-all border-2 border-fokus-gold/30 hover:border-fokus-gold uppercase tracking-wider"
-          >
-            View All Projects →
-          </motion.button>
-        </motion.div>
       </div>
     </section>
   );

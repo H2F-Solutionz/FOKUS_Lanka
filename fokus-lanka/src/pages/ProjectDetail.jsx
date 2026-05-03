@@ -1,11 +1,12 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { projectsData } from '../data/projects';
-import { ArrowLeft, MapPin, CheckCircle2, Calendar, Tag, Phone, Mail, ChevronRight, ExternalLink, ZoomIn } from 'lucide-react';
+import { ArrowLeft, MapPin, CheckCircle2, Calendar, Tag, Phone, Mail, ChevronRight, ExternalLink, ZoomIn, Construction, Star, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 const ProjectDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const project = projectsData.find(p => p.id === id);
   const [lightboxImg, setLightboxImg] = useState(null);
   const [activeGalleryIdx, setActiveGalleryIdx] = useState(0);
@@ -15,22 +16,27 @@ const ProjectDetail = () => {
   if (!project) {
     return (
       <div className="pt-32 pb-20 container mx-auto px-6 text-center min-h-screen flex flex-col items-center justify-center">
-        <div className="text-6xl mb-6">🏗️</div>
+        <div className="mb-6 bg-fokus-navy/5 p-8 rounded-full">
+          <Construction size={80} className="text-fokus-gold opacity-20" />
+        </div>
         <h2 className="text-3xl font-bold mb-4 text-fokus-navy">Project Not Found</h2>
         <p className="text-fokus-grey mb-8">This project doesn't exist in our portfolio.</p>
-        <Link to="/projects" className="inline-flex items-center gap-2 bg-fokus-navy text-white px-6 py-3 rounded-xl font-semibold hover:bg-fokus-blue transition-all">
+        <button
+          onClick={() => navigate(-1)}
+          className="inline-flex items-center gap-2 bg-fokus-navy text-white px-6 py-3 rounded-xl font-semibold hover:bg-fokus-blue transition-all"
+        >
           <ArrowLeft size={18} /> Back to Projects
-        </Link>
+        </button>
       </div>
     );
   }
 
   // Badge color
   const badgeStyle =
-    project.badge === 'UK Portfolio'    ? { bg: 'rgba(26,54,93,0.9)', text: '#93c5fd', border: 'rgba(147,197,253,0.3)' } :
-    project.badge === 'Active Project'  ? { bg: 'rgba(20,83,45,0.9)', text: '#86efac', border: 'rgba(134,239,172,0.3)' } :
-    project.badge === 'Completed'       ? { bg: 'rgba(120,53,15,0.9)', text: '#fcd34d', border: 'rgba(252,211,77,0.3)' } :
-                                          { bg: 'rgba(30,30,30,0.9)', text: '#e5e7eb', border: 'rgba(229,231,235,0.3)' };
+    project.badge === 'UK Portfolio' ? { bg: 'rgba(26,54,93,0.9)', text: '#93c5fd', border: 'rgba(147,197,253,0.3)' } :
+      project.badge === 'Active Project' ? { bg: 'rgba(20,83,45,0.9)', text: '#86efac', border: 'rgba(134,239,172,0.3)' } :
+        project.badge === 'Completed' ? { bg: 'rgba(120,53,15,0.9)', text: '#fcd34d', border: 'rgba(252,211,77,0.3)' } :
+          { bg: 'rgba(30,30,30,0.9)', text: '#e5e7eb', border: 'rgba(229,231,235,0.3)' };
 
   const allImages = [project.mainImage, ...project.gallery];
 
@@ -53,12 +59,12 @@ const ProjectDetail = () => {
 
         {/* Back button */}
         <div className="absolute top-6 left-6 z-20">
-          <Link
-            to="/projects"
+          <button
+            onClick={() => navigate(-1)}
             className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium bg-black/30 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 transition-all hover:bg-black/50"
           >
-            <ArrowLeft size={16} /> Back to Portfolio
-          </Link>
+            <ArrowLeft size={16} /> Back
+          </button>
         </div>
 
         {/* Hero content */}
@@ -71,10 +77,10 @@ const ProjectDetail = () => {
             {/* Badges row */}
             <div className="flex items-center gap-3 mb-3 flex-wrap">
               <span
-                className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+                className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full flex items-center gap-1.5"
                 style={{ background: badgeStyle.bg, color: badgeStyle.text, border: `1px solid ${badgeStyle.border}`, backdropFilter: 'blur(8px)' }}
               >
-                ⭐ {project.badge}
+                <Star size={10} fill="currentColor" /> {project.badge}
               </span>
               <span className="flex items-center gap-1.5 text-white/60 text-xs font-medium">
                 <Calendar size={12} /> {project.year}
@@ -183,37 +189,37 @@ const ProjectDetail = () => {
 
               {/* Main gallery viewer */}
               <div
-                className="relative h-72 md:h-[440px] rounded-2xl overflow-hidden mb-4 cursor-zoom-in group shadow-2xl"
-                onClick={() => setLightboxImg(project.gallery[activeGalleryIdx])}
+                className="relative h-72 md:h-[480px] rounded-[2rem] overflow-hidden mb-4 cursor-zoom-in group shadow-2xl border border-white/20"
+                onClick={() => setLightboxImg(allImages[activeGalleryIdx])}
               >
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={activeGalleryIdx}
-                    src={project.gallery[activeGalleryIdx]}
+                    src={allImages[activeGalleryIdx]}
                     alt={`Gallery ${activeGalleryIdx + 1}`}
                     className="w-full h-full object-cover"
-                    initial={{ opacity: 0, scale: 1.04 }}
+                    initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                   />
                 </AnimatePresence>
-                <div className="absolute inset-0 bg-fokus-navy/0 group-hover:bg-fokus-navy/20 transition-all flex items-center justify-center">
+                <div className="absolute inset-0 bg-fokus-navy/0 group-hover:bg-fokus-navy/10 transition-all flex items-center justify-center">
                   <ZoomIn size={32} className="text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
               </div>
 
               {/* Thumbnails */}
-              <div className="grid grid-cols-3 gap-3">
-                {project.gallery.map((img, idx) => (
+              <div className="grid grid-cols-4 sm:grid-cols-5 gap-3 mt-4">
+                {allImages.map((img, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveGalleryIdx(idx)}
-                    className="rounded-xl overflow-hidden h-24 relative border-2 transition-all"
+                    className="rounded-xl overflow-hidden h-20 relative border-2 transition-all"
                     style={{ borderColor: activeGalleryIdx === idx ? '#D4AF37' : 'transparent' }}
                   >
                     <img src={img} alt="" className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
-                    {activeGalleryIdx !== idx && <div className="absolute inset-0 bg-black/30 hover:bg-black/10 transition-all" />}
+                    {activeGalleryIdx !== idx && <div className="absolute inset-0 bg-black/40 hover:bg-black/10 transition-all" />}
                   </button>
                 ))}
               </div>
@@ -333,7 +339,7 @@ const ProjectDetail = () => {
               className="absolute top-5 right-5 text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all"
               onClick={() => setLightboxImg(null)}
             >
-              ✕
+              <X size={20} />
             </button>
           </motion.div>
         )}
