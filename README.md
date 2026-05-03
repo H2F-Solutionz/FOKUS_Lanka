@@ -1,6 +1,6 @@
 # 🏗️ Fokus Lanka | Engineering & Construction Excellence
 
-![Fokus Lanka Logo](public/logo.png)
+![Fokus Lanka Logo](fokus-lanka/public/logo.png)
 
 > **Bringing UK-qualified engineering precision and premium residential construction standards to the heart of Jaffna, Sri Lanka.**
 
