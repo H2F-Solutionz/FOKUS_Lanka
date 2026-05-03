@@ -1,4 +1,5 @@
 import { CheckCircle2 } from 'lucide-react';
+import hero4 from '../../assets/hero4.png';
 import { motion } from 'framer-motion';
 
 const reasons = [
@@ -12,65 +13,86 @@ const reasons = [
 
 const WhyChooseUsSection = () => {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-fokus-light/50 skew-x-12 translate-x-16 -z-10"></div>
+    <section className="py-20 bg-gradient-to-br from-white via-fokus-light/30 to-white relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-20 right-0 w-72 h-72 bg-fokus-gold/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-fokus-blue/5 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
             className="relative z-10"
           >
-            <h2 className="text-4xl font-bold font-poppins text-fokus-navy mb-6">
-              Why Choose <span className="text-fokus-gold">Fokus Lanka?</span>
+            <span className="text-fokus-gold font-bold text-sm tracking-widest uppercase">Why Partner With Us</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins text-fokus-navy mb-2 leading-tight">
+              Excellence in <span className="bg-gradient-to-r from-fokus-gold to-fokus-orange bg-clip-text text-transparent">Every Project</span>
             </h2>
-            <div className="w-20 h-1 bg-fokus-orange mb-8 rounded-full"></div>
+            <div className="h-1 w-16 bg-gradient-to-r from-fokus-gold to-fokus-orange mb-8 rounded-full"></div>
             
-            <p className="text-lg text-fokus-grey leading-relaxed mb-10">
-              Building a home is one of the most significant investments of your life. 
-              We bring world-class engineering discipline to your doorstep in Jaffna, 
-              ensuring your peace of mind from the drafting board to the final brick.
+            <p className="text-base text-fokus-grey leading-relaxed mb-12 max-w-md">
+              Building a home is one of the most significant investments of your life. We bring world-class engineering discipline to your doorstep, ensuring your complete peace of mind.
             </p>
 
-            <ul className="space-y-4">
+            <ul className="space-y-5">
               {reasons.map((reason, idx) => (
-                <li key={idx} className="flex items-start gap-4">
-                  <CheckCircle2 className="text-fokus-orange shrink-0 mt-1" size={24} />
-                  <span className="text-fokus-navy font-medium text-lg">{reason}</span>
-                </li>
+                <motion.li 
+                  key={idx} 
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="flex items-start gap-4 group"
+                >
+                  <CheckCircle2 className="text-fokus-gold shrink-0 mt-0.5 group-hover:scale-110 transition-transform" size={20} />
+                  <span className="text-fokus-navy font-medium text-sm leading-relaxed">{reason}</span>
+                </motion.li>
               ))}
             </ul>
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
             className="relative"
           >
-            <div className="grid grid-cols-2 gap-4">
-              <img 
-                src="https://images.unsplash.com/photo-1504307659564-90f67ab42dd2?q=80&w=800&auto=format&fit=crop" 
-                alt="Engineering blueprint" 
-                className="w-full h-64 object-cover rounded-xl mt-8 shadow-lg"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1533779283484-8ad4940aa3a8?q=80&w=800&auto=format&fit=crop" 
-                alt="Construction team" 
-                className="w-full h-80 object-cover rounded-xl shadow-xl"
-              />
+            <div className="grid grid-cols-2 gap-6">
+              <motion.div 
+                whileHover={{ y: -8 }}
+                className="rounded-2xl overflow-hidden shadow-xl border border-white/50 h-72 bg-gray-100"
+              >
+                <img
+                  src={hero4}
+                  alt="Engineering blueprint"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+              <motion.div 
+                whileHover={{ y: -8 }}
+                className="rounded-2xl overflow-hidden shadow-xl border border-white/50 h-80 bg-gray-100 mt-8"
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop" 
+                  alt="Construction team" 
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
             </div>
             {/* Experience Badge */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-fokus-navy text-white w-40 h-40 rounded-full flex flex-col items-center justify-center p-4 text-center border-4 border-white shadow-2xl">
-              <span className="text-4xl font-bold text-fokus-gold">30+</span>
-              <span className="font-poppins text-sm uppercase tracking-wide mt-1">Years<br/>Quality</span>
-            </div>
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="absolute top-1/3 left-1/2 -translate-x-1/2 bg-gradient-to-br from-fokus-navy to-fokus-blue text-white w-44 h-44 rounded-full flex flex-col items-center justify-center p-4 text-center border-4 border-white shadow-2xl"
+            >
+              <span className="text-5xl font-bold text-fokus-gold">30+</span>
+              <span className="font-poppins text-sm uppercase tracking-wider mt-2 font-semibold">Years of<br/>Experience</span>
+            </motion.div>
           </motion.div>
 
         </div>
