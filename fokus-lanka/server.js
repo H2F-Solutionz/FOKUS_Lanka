@@ -1,6 +1,11 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -18,6 +23,9 @@ const transporter = nodemailer.createTransport({
     pass: 'YOUR_APP_PASSWORD'      
   }
 });
+
+// Serve static files from the Vite build directory
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.post('/api/contact', async (req, res) => {
   const { name, phone, email, service, message } = req.body;
@@ -46,7 +54,12 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
+// Handle SPA routing - deliver index.html for any unknown routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Contact form backend server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
