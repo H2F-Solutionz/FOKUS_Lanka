@@ -1,17 +1,16 @@
 const SectionHeading = ({ title, subtitle, centered = false, light = false }) => {
   return (
-    <div className={`mb-12 ${centered ? 'text-center' : ''}`}>
+    <div className={`mb-10 ${centered ? 'text-center' : ''}`}>
       <h2 
-        className={`text-3xl md:text-4xl font-bold font-poppins mb-4 relative inline-block ${
+        className={`text-4xl md:text-5xl lg:text-5xl font-bold font-poppins mb-2 relative inline-block ${
           light ? 'text-white' : 'text-fokus-navy'
         }`}
       >
         {title}
-        {/* Accent Underline */}
-        <span className={`absolute -bottom-2 ${centered ? 'left-1/2 -translate-x-1/2' : 'left-0'} w-1/2 h-1 bg-fokus-gold rounded-full`}></span>
       </h2>
+      <div className={`h-1 w-20 bg-gradient-to-r from-fokus-gold to-fokus-orange rounded-full ${centered ? 'mx-auto mt-3' : 'mt-3'}`}></div>
       {subtitle && (
-        <p className={`text-lg max-w-2xl mt-4 ${centered ? 'mx-auto' : ''} ${
+        <p className={`text-base md:text-lg max-w-2xl mt-4 leading-relaxed ${centered ? 'mx-auto' : ''} ${
           light ? 'text-gray-300' : 'text-fokus-grey'
         }`}>
           {subtitle}

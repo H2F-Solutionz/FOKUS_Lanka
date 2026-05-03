@@ -47,12 +47,13 @@ const ProjectDetail = () => {
           </div>
 
           {/* Large Hero Image */}
-          <div className="h-[400px] md:h-[600px] w-full overflow-hidden">
+          <div className="h-[400px] md:h-[700px] w-full overflow-hidden rounded-3xl shadow-2xl border-2 border-white relative group">
             <img 
               src={project.mainImage} 
               alt={project.title} 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-fokus-navy/20 to-transparent"></div>
           </div>
 
           {/* Content Wrapper */}
@@ -60,43 +61,78 @@ const ProjectDetail = () => {
             
             {/* Left: Detailed Info */}
             <div className="lg:col-span-2 space-y-8">
-              <div>
-                <h3 className="text-2xl font-bold font-poppins text-fokus-navy mb-4">Project Overview</h3>
-                <p className="text-fokus-grey text-lg leading-relaxed whitespace-pre-line">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h3 className="text-3xl font-bold font-poppins text-fokus-navy mb-2">Project Overview</h3>
+                <div className="h-1 w-16 bg-gradient-to-r from-fokus-gold to-fokus-orange rounded-full mb-4"></div>
+                <p className="text-fokus-grey text-base leading-relaxed whitespace-pre-line">
                   {project.description}
                 </p>
-              </div>
+              </motion.div>
 
               {/* Technical Specs / Details Cards */}
-              <div className="grid md:grid-cols-2 gap-4">
+              <motion.div 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="grid md:grid-cols-2 gap-5"
+              >
                 {project.details.map((detail, idx) => (
-                  <div key={idx} className="flex items-center gap-3 bg-fokus-light p-4 rounded-xl border border-gray-100">
-                    <CheckCircle2 className="text-fokus-gold shrink-0" size={20} />
-                    <span className="text-fokus-navy font-medium">{detail}</span>
-                  </div>
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex items-start gap-4 bg-gradient-to-br from-fokus-light to-white p-5 rounded-xl border border-gray-100/50 hover:border-fokus-gold/30 transition-all hover:-translate-y-1"
+                  >
+                    <CheckCircle2 className="text-fokus-gold shrink-0 mt-1" size={22} />
+                    <span className="text-fokus-navy font-medium text-sm">{detail}</span>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
 
               {/* Gallery Grid */}
-              <div className="pt-8">
-                <h3 className="text-2xl font-bold font-poppins text-fokus-navy mb-6">Gallery</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="pt-12"
+              >
+                <h3 className="text-3xl font-bold font-poppins text-fokus-navy mb-2">Gallery</h3>
+                <div className="h-1 w-16 bg-gradient-to-r from-fokus-gold to-fokus-orange rounded-full mb-8"></div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {project.gallery.map((img, idx) => (
                     <motion.div 
                       key={idx}
-                      whileHover={{ scale: 1.02 }}
-                      className="rounded-xl overflow-hidden h-64 shadow-md border border-gray-100"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      whileHover={{ y: -10 }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="rounded-2xl overflow-hidden h-72 shadow-xl hover:shadow-2xl border border-white bg-gray-100 group relative"
                     >
-                      <img src={img} alt={`Gallery ${idx}`} className="w-full h-full object-cover" />
+                      <img 
+                        src={img} 
+                        alt={`Gallery ${idx}`} 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-fokus-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </motion.div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Right: Sidebar Action */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-32 p-8 bg-fokus-navy text-white rounded-2xl shadow-xl">
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="lg:col-span-1"
+            >
+              <div className="sticky top-32 p-8 bg-gradient-to-br from-fokus-navy to-fokus-blue text-white rounded-3xl shadow-2xl border border-white/10 backdrop-blur-sm">
                 <h4 className="text-xl font-bold font-poppins mb-4">Interested in such a project?</h4>
                 <p className="text-gray-300 text-sm mb-8 leading-relaxed">
                   We can help you build your custom dream home with the same standards and attention to detail seen in our portfolio.
@@ -122,7 +158,7 @@ const ProjectDetail = () => {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
