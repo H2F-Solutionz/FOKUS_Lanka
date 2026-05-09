@@ -82,7 +82,7 @@ const AppContent = () => {
         <div className="fixed bottom-8 left-8 z-50 flex items-center gap-3">
           {/* WhatsApp Logo */}
           <a
-            href="https://wa.me/94701080100"
+            href="https://wa.me/94766684532"
             target="_blank"
             rel="noreferrer"
             className="bg-[#25D366] text-white p-4 rounded-full shadow-[0_0_15px_rgba(37,211,102,0.5)] hover:bg-[#20bd5a] hover:scale-110 hover:shadow-[0_0_25px_rgba(37,211,102,0.8)] transition-all duration-300 flex items-center justify-center"

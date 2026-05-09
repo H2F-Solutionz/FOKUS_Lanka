@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import SectionHeading from '../ui/SectionHeading';
 import { Mail, MapPin, Phone, Send, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -20,22 +19,35 @@ const ContactSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ loading: true, error: null, success: false });
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
+    if (!accessKey) {
+      setStatus({ loading: false, error: 'Contact form is not configured. Please set VITE_WEB3FORMS_KEY.', success: false });
+      return;
+    }
     
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          access_key: accessKey,
+          from_name: formData.name,
+          subject: `Fokus Lanka Website Inquiry - ${formData.service || 'General'}`,
+          ...formData
+        })
       });
+
+      const data = await response.json();
       
-      if (response.ok) {
+      if (response.ok && data.success) {
         setStatus({ loading: false, error: null, success: true });
         setFormData({ name: '', phone: '', email: '', service: '', message: '' });
       } else {
         setStatus({ loading: false, error: 'Failed to send message. Please try again later.', success: false });
       }
     } catch (error) {
-      setStatus({ loading: false, error: 'Network error. Make sure the backend server is running.', success: false });
+      setStatus({ loading: false, error: 'Network error. Please check your connection and try again.', success: false });
     }
   };
 
@@ -55,7 +67,7 @@ const ContactSection = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="text-fokus-gold font-bold text-sm tracking-widest uppercase">Contact Us</span>
-            <h2 className="text-3xl md:text-4xl font-bold font-poppins mt-2 mb-2 leading-tight\">
+            <h2 className="text-3xl md:text-4xl font-bold font-poppins mt-2 mb-2 leading-tight">
               Get In <span className="bg-gradient-to-r from-fokus-gold to-fokus-orange bg-clip-text text-transparent">Touch</span>
             </h2>
             <div className="h-1 w-16 bg-gradient-to-r from-fokus-gold to-fokus-orange mb-8 rounded-full"></div>
@@ -75,11 +87,8 @@ const ContactSection = () => {
                   <h4 className="text-lg font-bold font-poppins mb-1">Phone</h4>
                   <p className="text-gray-400 mb-2 text-sm">Call us for immediate support</p>
                   <div className="flex flex-col gap-2">
-                    <a href="tel:+940701080100" className="text-fokus-gold hover:text-fokus-orange transition-colors font-semibold text-sm">
-                      +94 070 10 80 100
-                    </a>
-                    <a href="tel:+940706070100" className="text-fokus-gold hover:text-fokus-orange transition-colors font-semibold text-sm">
-                      +94 070 60 70 100
+                    <a href="tel:+94766684532" className="text-fokus-gold hover:text-fokus-orange transition-colors font-semibold text-sm">
+                      +94 76 668 4532
                     </a>
                   </div>
                 </div>
@@ -241,7 +250,7 @@ const ContactSection = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/20 text-white placeholder-gray-400 focus:border-fokus-gold focus:ring-2 focus:ring-fokus-gold/30 outline-none transition-all"
-                    placeholder="+94 77 XXX XXXX"
+                    placeholder="+94 76 668 4532"
                   />
                 </div>
                 <div>

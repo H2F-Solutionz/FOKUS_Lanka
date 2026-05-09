@@ -25,9 +25,9 @@ export const knowledgeBase = {
     }
   ],
   contact: {
-    phone: ["+94 701 080 100", "+94 706 070 100"],
+    phone: ["+94 76 668 4532", "+94 76 668 4532"],
     email: "fokuslankajaf@gmail.com",
-    whatsapp: "+94 701 080 100"
+    whatsapp: "+94 76 668 4532"
   },
   projects: [
     {

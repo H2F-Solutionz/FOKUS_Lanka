@@ -36,10 +36,10 @@ const Footer = () => {
             <h4 className="text-lg font-bold mb-6 text-white">Contact</h4>
             <ul className="space-y-4 text-gray-400 font-light">
               <li className="flex items-center gap-2">
-                <span className="text-brand-orange">📞</span> +94 070 10 80 100
+                <span className="text-brand-orange">📞</span> +94 76 668 4532
               </li>
               <li className="flex items-center gap-2">
-                <span className="text-brand-orange">📞</span> +94 070 60 70 100
+                <span className="text-brand-orange">📞</span> +94 76 668 4532
               </li>
               <li className="mt-6 pt-4 border-t border-white/10">
                 <span className="block text-white font-medium">N.K. Kumarasooriyar</span>

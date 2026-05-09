@@ -31,7 +31,7 @@ const Chatbot = () => {
       setMessages(prev => [...prev, { from: 'bot', text: botReply }]);
     } catch (err) {
       console.error('Chat error:', err);
-      setMessages(prev => [...prev, { from: 'bot', text: 'Sorry, I\'m having trouble connecting right now. Please call us at +94 701 080 100.' }]);
+      setMessages(prev => [...prev, { from: 'bot', text: 'Sorry, I\'m having trouble connecting right now. Please call us at +94 76 668 4532.' }]);
     } finally {
       setLoading(false);
     }

@@ -43,8 +43,8 @@ const Contact = () => {
                </div>
                <div>
                   <p className="text-gray-500 text-xs font-semibold uppercase tracking-widest mb-2">Contact</p>
-                  <p className="text-white font-medium text-lg mb-1">+94 070 10 80 100</p>
-                  <p className="text-white font-medium text-lg">+94 070 60 70 100</p>
+                <p className="text-white font-medium text-lg mb-1">+94 76 668 4532</p>
+                <p className="text-white font-medium text-lg">+94 76 668 4532</p>
                </div>
             </div>
 

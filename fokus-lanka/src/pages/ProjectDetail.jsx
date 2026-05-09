@@ -263,18 +263,18 @@ const ProjectDetail = () => {
 
                   <div className="space-y-2.5">
                     <a
-                      href="tel:+940701080100"
+                      href="tel:+94766684532"
                       className="flex items-center gap-3 w-full text-white/80 hover:text-white py-3 px-4 rounded-xl font-medium text-sm transition-all hover:bg-white/10 border border-white/10 hover:border-white/20"
                     >
                       <Phone size={15} className="text-fokus-gold shrink-0" />
-                      +94 070 10 80 100
+                      +94 76 668 4532
                     </a>
                     <a
-                      href="tel:+940706070100"
+                      href="tel:+94766684532"
                       className="flex items-center gap-3 w-full text-white/80 hover:text-white py-3 px-4 rounded-xl font-medium text-sm transition-all hover:bg-white/10 border border-white/10 hover:border-white/20"
                     >
                       <Phone size={15} className="text-fokus-gold shrink-0" />
-                      +94 070 60 70 100
+                      +94 76 668 4532
                     </a>
                     <a
                       href="mailto:info@fokuslanka.com"

@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /api/
-
 Sitemap: https://fokus-lanka.pages.dev/sitemap.xml
